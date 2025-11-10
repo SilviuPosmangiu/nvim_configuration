@@ -45,37 +45,16 @@ require("lazy").setup({
 	      end,
 	},
 	{'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons'},
+	{
+	  "rmagatti/auto-session",
+	  lazy = false,
 
-{
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-  },
-  config = function()
-    local cmp = require("cmp")
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      }),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-      }, {
-        { name = "buffer" },
-        { name = "path" },
-      }),
-    })
-  end
-}
+	  ---enables autocomplete for opts
+	  ---@module "auto-session"
+	  ---@type AutoSession.Config
+	  opts = {
+	    suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+	    -- log_level = 'debug',
+	  },
+	}
   })
