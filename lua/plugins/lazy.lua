@@ -23,7 +23,29 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-	{ "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+--	{ "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+	{
+	  "catppuccin/nvim",
+	  name = "catppuccin",
+	  priority = 1000,
+	  config = function()
+	    require("catppuccin").setup({
+	      flavour = "mocha", -- latte, frappe, macchiato, mocha
+	      transparent_background = false, -- true dacă vrei terminal transparent
+	      integrations = {
+		treesitter = true,
+		native_lsp = { enabled = true },
+		telescope = true,
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
+		which_key = true,
+	      },
+	    })
+	    vim.cmd.colorscheme("catppuccin")
+	  end,
+	},
+
 	{ 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
 	{
 	    "nvim-tree/nvim-tree.lua",
@@ -56,5 +78,5 @@ require("lazy").setup({
 	    suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 	    -- log_level = 'debug',
 	  },
-	}
+	},
   })
