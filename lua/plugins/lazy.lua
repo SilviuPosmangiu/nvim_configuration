@@ -56,5 +56,7 @@ require("lazy").setup({
 	    suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 	    -- log_level = 'debug',
 	  },
-	}
+	},
+	
+	
   })
